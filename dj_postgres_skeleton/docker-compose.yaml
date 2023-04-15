@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  dj-postgres-database:
+    image: library/postgres:15.2
+    volumes:
+      - /srv/dj-postgres/database/dj-postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: dj_postgres
+      POSTGRES_USER: dj_postgres
+      POSTGRES_PASSWORD: dj_postgres_pw
+    networks:
+      dj-postgres-network:
+  
+  dj-postgres-back:
+    build:
+      context: .
+    command: /opt/code/manage.py runserver 0.0.0.0:80
+    volumes:
+      - .:/opt/code
+      - ./data:/data
+    ports:
+      - "12001:80"
+    links:
+      - dj-postgres-database
+    env_file:
+      - .env
+    networks:
+      dj-postgres-network:
+
+networks:
+  dj-postgres-network:

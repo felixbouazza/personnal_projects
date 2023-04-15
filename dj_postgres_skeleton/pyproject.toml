@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "dj-postgres-skeleton"
+version = "0.1.0"
+description = "Django with Postgres skeleton"
+authors = ["Félix Bouazza"]
+readme = "README.md"
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2"
+django-environ = "^0.10.0"
+django-rest-framework = "^0.1.0"
+django-cors-headers = "^3.14.0"
+django-extensions = "^3.2.1"
+django-filter = "^23.1"
+psycopg = "^3.1.8"
+psycopg-binary = "^3.1.8"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.12.0"
+flake8 = "^6.0.0"
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
